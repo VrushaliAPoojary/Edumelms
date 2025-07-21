@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
     const navigate = useNavigate()
 
     const [allCourses,setAllCourses] = useState([])
+    const [isEducator,setIsEducator] = useState(true)
 
    //fetch all courses
 
@@ -40,7 +41,7 @@ import { useNavigate } from "react-router-dom";
  },[]) 
 
    const value = {
-       currency, allCourses, navigate, calculateRating
+       currency, allCourses, navigate, calculateRating, isEducator,setIsEducator
 
    }
    return (
