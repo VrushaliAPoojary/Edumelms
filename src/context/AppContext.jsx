@@ -1,17 +1,29 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import "../index.css";
+import { createContext, useEffect } from "react";
+import { dummyCourses } from "../assets/assets";
+ export const AppContext = createContext();
+ export const AppContextProvider = (props)=>{
+   
+    const currency = import.meta.env.VITE_CURRENCY
 
-import App from "../App.jsx";
+    const [allCourses,setAllCourses] = useState([]);
 
-import { AppContextProvider } from "./AppContext.jsx";
+   //fetch all courses
 
-import { BrowserRouter } from 'react-router-dom';
+    const fetchAllCourses = async ()=>{
 
-createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <AppContextProvider>
-      <App />
-    </AppContextProvider>
-  </BrowserRouter>
-);
+        setAllCourses(dummyCourses)
+   }
+ useEffect(()=>{
+  fetchAllCourses()
+ },[]) 
+
+   const value = {
+    currency, allCourses
+
+   }
+   return (
+    <AppContext.Provider value={value}>
+      {props.children}
+    </AppContext.Provider>
+   )
+ }
