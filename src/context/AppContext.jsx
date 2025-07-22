@@ -32,7 +32,8 @@ import { useNavigate } from "react-router-dom";
     })
     return totalRating / course.courseRatings.length
    }
-
+// functin to calculate course chapter time
+const calculateChapterTime = (course)=>{
 
 
 
