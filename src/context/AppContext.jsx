@@ -20,7 +20,7 @@ export const AppContextProvider = (props) => {
 
   //function to calculate average rating of course
   const calculateRating = (course) => {
-    if (course.courseRatings.length === 0) {
+    if (!course.courseRatings || course.courseRatings.length === 0) {
       return 0;
     }
     let totalRating = 0;
@@ -33,6 +33,7 @@ export const AppContextProvider = (props) => {
   // functin to calculate course chapter time
   const calculateChapterTime = (chapter) => {
     let time = 0;
+    if (!chapter.chapterContent) return '0 mins';
     chapter.chapterContent.map((lecture) => time += lecture.lectureDuration);
     return humanizeDuration(time * 60 * 1000, { units: ["h", "m"] });
   };
@@ -40,6 +41,7 @@ export const AppContextProvider = (props) => {
   // function to calculATE course duration
   const calculateCourseDuration = (course) => {
     let time = 0;
+    if (!course.courseContent) return '0 mins';
     course.courseContent.map((chapter) =>
       chapter.chapterContent.map((lecture) => time += lecture.lectureDuration)
     );
@@ -49,6 +51,7 @@ export const AppContextProvider = (props) => {
   // function to calculate no of lectures in the course
   const calculateNoOfLectures = (course) => {
     let totalLectures = 0;
+    if (!course.courseContent) return 0;
     course.courseContent.forEach((chapter) => {
       if (Array.isArray(chapter.chapterContent)) {
         totalLectures += chapter.chapterContent.length;
