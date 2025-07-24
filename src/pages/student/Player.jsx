@@ -26,7 +26,7 @@ const Player = () => {
 
   useEffect(() => {
     getCourseData();
-  }, []);
+  }, [enrolledCourses]);
 
   return (
     <div className="p-4 sm:p-10 flex flex-col-reverse md:grid md:grid-cols-2 gap-10 md:px-36">
