@@ -70,7 +70,7 @@ const Dashboard = () => {
                       <img src={item.student.imageUrl} alt="Profile" className='w-9 h-9 rounded-full' />
                       <span className='truncate'>{item.student.name}</span>
                     </td>
-                    <td className='px-4 py-3 truncate'>{item.courseTitle}</td> {/* ✅ Fixed here */}
+                    <td className='px-4 py-3 truncate'>{item.courseTitle}</td> 
                   </tr>
                 ))}
               </tbody>
